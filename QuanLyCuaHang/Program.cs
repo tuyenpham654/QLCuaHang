@@ -11,12 +11,14 @@ namespace QuanLyCuaHang
         static void Main(string[] args)
         {
            
-            Product product = new Product(10,"name","Price","weight","memory") ;
+        /*    Product product = new Product(10,"name","Price","weight","memory") ;
             Console.WriteLine("+--------------------------------------+");
             Console.WriteLine("| ID | Name | Price | Weight | Memory  |");
             Console.WriteLine("+--------------------------------------+");
             Console.WriteLine(product.toString());
-            Console.WriteLine("+--------------------------------------+");
+            Console.WriteLine("+--------------------------------------+");*/
+
+
             Console.ReadKey();
         }
     }
