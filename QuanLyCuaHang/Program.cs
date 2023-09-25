@@ -54,7 +54,7 @@ namespace QuanLyCuaHang
                         Console.WriteLine("Lua chon 5 da chon");
                         Console.ReadKey();
                         break;
-                    case "6":
+                    case "0":
                         Console.WriteLine("Ket thuc chuong trinh");
                         isRunning = false; // Kết thúc chương trình
                         break;
