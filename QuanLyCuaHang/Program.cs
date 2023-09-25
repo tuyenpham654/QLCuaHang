@@ -24,10 +24,11 @@ namespace QuanLyCuaHang
                 Console.WriteLine("+-------------------------------------------+");
                 Console.WriteLine("| 1. Xem                                    |");
                 Console.WriteLine("| 2. Them                                   |");
-                Console.WriteLine("| 3. Tim kiem                               |");
-                Console.WriteLine("| 4. Xuat file                              |");
-                Console.WriteLine("| 5. Doc file                               |");
-                Console.WriteLine("| 6. Thoat                                  |");
+                Console.WriteLine("| 3. Xoa                                    |");
+                Console.WriteLine("| 4. Tim kiem                               |");
+                Console.WriteLine("| 5. Xuat file                              |");
+                Console.WriteLine("| 6. Doc file                               |");
+                Console.WriteLine("| 0. Thoat                                  |");
                 Console.WriteLine("+-------------------------------------------+");
                 Console.Write("Moi ban nhap lua chon: ");
                 string luaChon = Console.ReadLine();
