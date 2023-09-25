@@ -7,35 +7,30 @@ using System.Threading.Tasks;
 
 namespace QuanLyCuaHang
 {
-    internal class Product
+    class Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Price { get; set; }
-        public string Weight { get; set; }
-        public string Memory { get; set; }
-        public Product()
+        private int product_id;
+        private string name;
+        private string description;
+        private double price;
+
+        public int Product_id { get => product_id; set => product_id = value; }
+        public string Name { get => name; set => name = value; }
+        public string Description { get => description; set => description = value; }
+        public double Price { get => price; set => price = value; }
+
+        public Product(int product_id, string name, string description, double price)
         {
-            Id = 0;
-            Name = "";
-            Price = "";
-            Weight = "";
-            Memory = "";
+            this.Product_id = product_id;
+            this.Name = name;
+            this.Description = description;
+            this.Price = price;
         }
-        public Product(int _Id, string _Name,string _Price, string _Weight, string _Memory)
-        {
-            this.Id = _Id;
-            this.Name = _Name;
-            this.Price = _Price;
-            this.Weight = _Weight;  
-            this.Memory = _Memory;
-        }
+
         public string toString()
         {
-            return $"+ {Id} | {Name} | {Price} | {Weight} | {Memory}  + ";
+            return $"{Product_id} | {Name} | {Description} | {Price} |";
         }
 
     }
-
-  
 }
