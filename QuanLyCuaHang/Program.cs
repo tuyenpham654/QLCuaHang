@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyCuaHang.SanPham;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,12 @@ namespace QuanLyCuaHang
     {
         static void Main(string[] args)
         {
+            List<Product> products = new List<Product>
+        {
+            new Mobile(1, "Samsung Galaxy", "Smartphone", 800, 1, "Samsung","360"),
+            new Laptop(2, "Dell XPS", "High-performance laptop", 1500, 1, "16", "Intel i7")
+        };
+
             /*    Product product = new Product(10,"name","Price","weight","memory") ;
                 Console.WriteLine("+--------------------------------------+");
                 Console.WriteLine("| ID | Name | Price | Weight | Memory  |");
@@ -35,7 +42,7 @@ namespace QuanLyCuaHang
                 switch (luaChon)
                 {
                     case "1":
-                        Console.WriteLine("Lua chon 1 da chon");
+                        Product.DisplayProducts(products);
                         Console.ReadKey();
                         break;
                     case "2":
@@ -43,12 +50,46 @@ namespace QuanLyCuaHang
                         Console.ReadKey();
                         break;
                     case "3":
-                        Console.WriteLine("Lua chon 3 da chon");
-                        Console.ReadKey();
+                        Console.WriteLine("Ban muon xoa ?");
+                        Console.WriteLine("\t1 - San Pham");
+                        Console.WriteLine("\t2 - Phieu Nhap Hang");
+                        Console.Write("Lua chon? ");
+                        switch (Console.ReadLine())
+                        {
+                            case "1":
+                                Console.Write("Nhap ID san pham muon xoa: ");
+                                int productIdToDelete = int.Parse(Console.ReadLine());
+                                Product.DeleteProduct(productIdToDelete, products);
+                                Console.ReadKey();
+                                break;
+                            case "2":
+                                Console.WriteLine($"Your result: 2");
+                                Console.ReadKey();
+                                break;
+                        }
                         break;
                     case "4":
-                        Console.WriteLine("Lua chon 4 da chon");
-                        Console.ReadKey();
+                        Console.WriteLine("Ban muon tim ?");
+                        Console.WriteLine("\t1 - San Pham");
+                        Console.WriteLine("\t2 - Phieu Nhap Hang");
+                        Console.Write("Lua chon? ");
+                        switch (Console.ReadLine())
+                        {
+                            case "1":
+                                Console.Write("Nhap ID san pham muon tim kiem: ");
+                                int productIdToFind = int.Parse(Console.ReadLine());
+                                Product foundProduct = Product.FindProductById(productIdToFind, products);
+                                if (foundProduct != null)
+                                    Console.WriteLine("San pham tim kiem:\n" + foundProduct.ToString());
+                                else
+                                    Console.WriteLine("Khong tim thay san pham voi ID " + productIdToFind);
+                                Console.ReadKey();
+                                break;
+                            case "2":
+                                Console.WriteLine($"Your result: 2");
+                                Console.ReadKey();
+                                break;
+                        }
                         break;
                     case "5":
                         Console.WriteLine("Lua chon 5 da chon");

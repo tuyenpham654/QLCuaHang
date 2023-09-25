@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -24,9 +25,10 @@ namespace QuanLyCuaHang.SanPham
             this.Storage = storage;
             this.GraphicsCard = graphicsCard;
         }
-        public string toString()
+        public override string ToString()
         {
-            return $"{Serial_id} | {Storage} | {GraphicsCard} | {base.toString()}";
+            return $"{base.ToString()}\n Serial_id: {Serial_id}\n Storage: {Storage}\n GraphicsCard: {GraphicsCard}\n ";
         }
     }
+ 
 }
