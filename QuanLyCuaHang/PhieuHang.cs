@@ -8,13 +8,21 @@ namespace QuanLyCuaHang
 {
      abstract class PhieuHang
     {
-        public int MaPhieu { get; set; }
-        public DateTime NgayNhapHang { get; set; }
-        public string TenNhaCungCap { get; set; }
-        public int LoaiHang { get; set; }
-        public int SoLuong { get; set; }
-        public string TenSP { get; set; }
-        public string MoTa { get; set; }
+        private int maPhieu;
+        private DateTime ngayNhapHang;
+        private string tenNhaCungCap;
+        private int loaiHang;
+        private int soLuong;
+        private string tenSP;
+        private string moTa;
+
+        public int MaPhieu { get => maPhieu; set => maPhieu = value; }
+        public DateTime NgayNhapHang { get => ngayNhapHang; set => ngayNhapHang = value; }
+        public int LoaiHang { get => loaiHang; set => loaiHang = value; }
+        public int SoLuong { get => soLuong; set => soLuong = value; }
+        public string TenSP { get => tenSP; set => tenSP = value; }
+        public string MoTa { get => moTa; set => moTa = value; }
+        public string TenNhaCungCap { get => tenNhaCungCap; set => tenNhaCungCap = value; }
 
         public PhieuHang(int maPhieu, DateTime ngayNhapHang, string tenNhaCungCap, int loaiHang, int soLuong, string tenSP, string moTa)
         {
@@ -43,7 +51,6 @@ namespace QuanLyCuaHang
 
         public virtual string toString()
         {
-          
             return ($"| {MaPhieu,-10} | {NgayNhapHang.ToString("dd-MM-yyyy")} | {TenNhaCungCap,-10} |{LoaiHang,-10} |{SoLuong,-10}| {TenSP,-10} | {MoTa,-10}| {TinhTong(),-10}|");
 
             /*

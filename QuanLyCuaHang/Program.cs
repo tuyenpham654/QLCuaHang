@@ -16,12 +16,6 @@ namespace QuanLyCuaHang
         static string filePath = "D:\\Nhom 2\\QLCuaHang\\QuanLyCuaHang\\file\\ThietBi.txt";
         static void Main(string[] args)
         {
-            /*    Product product = new Product(10,"name","Price","weight","memory") ;
-                Console.WriteLine("+--------------------------------------+");
-                Console.WriteLine("| ID | Name | Price | Weight | Memory  |");
-                Console.WriteLine("+--------------------------------------+");
-                Console.WriteLine(product.toString());
-                Console.WriteLine("+--------------------------------------+");*/
             bool isRunning = true;
             while (isRunning)
             {
@@ -159,19 +153,19 @@ namespace QuanLyCuaHang
         {
             using (StreamWriter sw = new StreamWriter(filePath))
             {
-                foreach (var loHang in danhSachPhieuHang)
+                foreach (var phieuHang in danhSachPhieuHang)
                 {
-                    sw.WriteLine(loHang.toString());
+                    sw.WriteLine(phieuHang.toString());
                 }
             }
 
-            Console.WriteLine("Danh sách lô hàng đã được lưu vào tập tin.");
+            Console.WriteLine("Phiếu hàng đã được lưu vào tập tin.");
         }
 
 
         static void InToanBoDonHang()
         {
-            Console.WriteLine("+----------------------------------------------------------------------------------------------+");
+            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
             Console.WriteLine("| Mã phiếu | Ngày nhập hàng | Tên nhà cung cấp | Loại hàng | Số lượng| Tên sản phẩm | Cấu hình | Tổng |");
 
 
@@ -180,7 +174,7 @@ namespace QuanLyCuaHang
 
                 Console.WriteLine(phieuHang.toString());
             }
-            Console.WriteLine("+----------------------------------------------------------------------------------------------+");
+            Console.WriteLine("+------------------------------------------------------------------------------------------------------+");
         }
 
         static void TimKiemDonHangTheoMaPhieu()

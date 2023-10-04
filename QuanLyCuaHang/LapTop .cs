@@ -8,9 +8,13 @@ namespace QuanLyCuaHang
 {
     class LapTop : PhieuHang
     {
-        public string SoSeri { get; set; }
-        public double GiaVonNhapHang { get; set; }
-        public double TyGiaThue { get; set; }
+        private string soSeri;
+        private double giaVonNhapHang;
+        private double tyGiaThue;
+
+        public string SoSeri { get => soSeri; set => soSeri = value; }
+        public double GiaVonNhapHang { get => giaVonNhapHang; set => giaVonNhapHang = value; }
+        public double TyGiaThue { get => tyGiaThue; set => tyGiaThue = value; }
 
         public LapTop(int maPhieu, DateTime ngayNhapHang, string tenNhaCungCap, int loaiHang, int soLuong, string tenSP, string moTa, string soSeri, double giaVonNhapHang, double tyGiaThue)
             : base(maPhieu, ngayNhapHang, tenNhaCungCap, loaiHang, soLuong, tenSP, moTa)

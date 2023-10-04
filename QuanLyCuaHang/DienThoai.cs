@@ -8,9 +8,12 @@ namespace QuanLyCuaHang
 {
     class DienThoai : PhieuHang
     {
-        public int MaThung { get; set; }
-        public double DonGiaThung { get; set; }
-        public double PhiVanChuyen { get; set; }
+        private int maThung;
+        private double donGiaThung;
+        private double phiVanChuyen;
+        public int MaThung { get => maThung; set => maThung = value; }
+        public double DonGiaThung { get => donGiaThung; set => donGiaThung = value; }
+        public double PhiVanChuyen { get => phiVanChuyen; set => phiVanChuyen = value; }
 
         public DienThoai(int maPhieu, DateTime ngayNhapHang, string tenNhaCungCap, int loaiHang, int soLuong, string tenSP, string moTa, int maThung, double donGiaThung, double phiVanChuyen)
             : base(maPhieu, ngayNhapHang, tenNhaCungCap, loaiHang, soLuong, tenSP, moTa)
