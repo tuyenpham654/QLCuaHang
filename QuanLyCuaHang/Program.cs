@@ -92,37 +92,45 @@ namespace QuanLyCuaHang
 
         static void AddPhieuHang()
         {
+            int maPhieu = 1;
+            DateTime ngayNhapHang;
+            string tenNhaCungCap;
+            int loaiHang;
+            int soLuong;
+            string tenSP;
+
             Console.WriteLine("Nhập mã phiếu:");
-            int maPhieu = int.Parse(Console.ReadLine());
+            maPhieu = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Nhập ngày nhập hàng (dd/mm/yyyy):");
-            DateTime ngayNhapHang = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+            ngayNhapHang = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
 
             Console.WriteLine("Nhập tên nhà cung cấp:");
-            string tenNhaCungCap = Console.ReadLine();
+            tenNhaCungCap = Console.ReadLine();
 
             Console.WriteLine("Nhập loại hàng (1 - Laptop, 2 - Điện thoại):");
-            int loaiHang = int.Parse(Console.ReadLine());
+             loaiHang = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Nhập số lượng:");
-            int soLuong = int.Parse(Console.ReadLine());
+            soLuong = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Nhập tên sản phẩm:");
-            string tenSP = Console.ReadLine();
+             tenSP = Console.ReadLine();
 
             Console.WriteLine("Nhập mô tả cấu hình:");
             string moTa = Console.ReadLine();
 
             if (loaiHang == 1)
             {
+                string soSeri;
                 Console.WriteLine("Nhập số seri:");
-                string soSeri = Console.ReadLine();
-
+                 soSeri = Console.ReadLine();
+                double giaVonNhapHang;
                 Console.WriteLine("Nhập giá vốn nhập hàng:");
-                double giaVonNhapHang = double.Parse(Console.ReadLine());
-
+                giaVonNhapHang = double.Parse(Console.ReadLine());
+                double tyGiaThue;
                 Console.WriteLine("Nhập tỷ giá thuế:");
-                double tyGiaThue = double.Parse(Console.ReadLine());
+                tyGiaThue = double.Parse(Console.ReadLine());
 
                 LapTop laptop = new LapTop(maPhieu, ngayNhapHang, tenNhaCungCap, loaiHang, soLuong, tenSP, moTa, soSeri, giaVonNhapHang, tyGiaThue);
                 danhSachPhieuHang.Add(laptop);
@@ -153,8 +161,8 @@ namespace QuanLyCuaHang
            
             foreach (var phieuHang in danhSachPhieuHang)
             {
-                phieuHang.toString();
-                Console.WriteLine();
+                
+                Console.WriteLine(phieuHang.toString());
             }
             Console.WriteLine("+----------------------------------------------------------------------------------------------+");
         }
@@ -169,6 +177,7 @@ namespace QuanLyCuaHang
             if (phieuHang != null)
             {
                 phieuHang.toString();
+                Console.WriteLine(phieuHang.toString());
             }
             else
             {
