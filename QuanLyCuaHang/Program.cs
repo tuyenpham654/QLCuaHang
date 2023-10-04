@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace QuanLyCuaHang
 {
     internal class Program
     {
-    
+
         static List<PhieuHang> danhSachPhieuHang = new List<PhieuHang>();
         static string filePath = "D:\\ThietBi.txt";
         static void Main(string[] args)
@@ -71,10 +72,10 @@ namespace QuanLyCuaHang
                         break;
                     case "7":
                         Console.WriteLine("Lua chon 7 da chon");
-                       
+
                         Console.ReadKey();
                         break;
-            
+
                     case "0":
                         Console.WriteLine("Ket thuc chuong trinh");
                         isRunning = false; // Kết thúc chương trình
@@ -109,13 +110,13 @@ namespace QuanLyCuaHang
             tenNhaCungCap = Console.ReadLine();
 
             Console.WriteLine("Nhập loại hàng (1 - Laptop, 2 - Điện thoại):");
-             loaiHang = int.Parse(Console.ReadLine());
+            loaiHang = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Nhập số lượng:");
             soLuong = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Nhập tên sản phẩm:");
-             tenSP = Console.ReadLine();
+            tenSP = Console.ReadLine();
 
             Console.WriteLine("Nhập mô tả cấu hình:");
             string moTa = Console.ReadLine();
@@ -124,7 +125,7 @@ namespace QuanLyCuaHang
             {
                 string soSeri;
                 Console.WriteLine("Nhập số seri:");
-                 soSeri = Console.ReadLine();
+                soSeri = Console.ReadLine();
                 double giaVonNhapHang;
                 Console.WriteLine("Nhập giá vốn nhập hàng:");
                 giaVonNhapHang = double.Parse(Console.ReadLine());
@@ -157,11 +158,11 @@ namespace QuanLyCuaHang
         {
             Console.WriteLine("+----------------------------------------------------------------------------------------------+");
             Console.WriteLine("| Mã phiếu | Ngày nhập hàng | Tên nhà cung cấp | Loại hàng | Số lượng| Tên sản phẩm | Cấu hình | Tổng |");
-           
-           
+
+
             foreach (var phieuHang in danhSachPhieuHang)
             {
-                
+
                 Console.WriteLine(phieuHang.toString());
             }
             Console.WriteLine("+----------------------------------------------------------------------------------------------+");
@@ -225,6 +226,194 @@ namespace QuanLyCuaHang
         {
             // Hãy thêm mã code để xuất và đọc file txt thông tin phiếu nhập ở đây
             Console.WriteLine("Chức năng xuất và đọc file đang phát triển.");
+        }
+     
+
+    static void SuaPhieuNhap()
+    {
+        Console.Write("Nhập mã phiếu nhập hàng cần sửa: ");
+            int maPhieu = int.Parse(Console.ReadLine());
+
+            PhieuHang phieuHang = danhSachPhieuHang.Find(p => p.MaPhieu == maPhieu);
+           // string maPhieuCanSua = Console.ReadLine();
+
+        PhieuHang phieuCanSua = null;
+
+        foreach (var phieuNhap in danhSachPhieuHang)
+        {
+            if (phieuNhap.MaPhieu == maPhieu)
+            {
+                phieuCanSua = phieuNhap;
+                break;
+            }
+        }
+
+        if (phieuCanSua != null)
+        {
+            Console.WriteLine("Chọn thông tin bạn muốn sửa:");
+            Console.WriteLine("1. Ngày nhập hàng");
+            Console.WriteLine("2. Nhà cung cấp");
+            Console.WriteLine("3. Mô tả cấu hình");
+            Console.WriteLine("4. Thông tin laptop");
+            Console.WriteLine("5. Thông tin điện thoại");
+            Console.Write("Nhập lựa chọn của bạn: ");
+            int luaChon = int.Parse(Console.ReadLine());
+
+            switch (luaChon)
+            {
+                case 1:
+                    Console.Write("Nhập ngày nhập hàng mới (dd/MM/yyyy): ");
+                    string ngayNhapHangInput = Console.ReadLine();
+                    if (DateTime.TryParseExact(ngayNhapHangInput, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime ngayNhapHangMoi))
+                    {
+                        phieuCanSua.NgayNhapHang = ngayNhapHangMoi;
+                        Console.WriteLine("Ngày nhập hàng đã được cập nhật.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ngày không hợp lệ. Không thay đổi.");
+                    }
+                    break;
+                case 2:
+                    Console.Write("Nhập tên nhà cung cấp mới: ");
+                    string nhaCungCapMoi = Console.ReadLine();
+                    phieuCanSua.TenNhaCungCap = nhaCungCapMoi;
+                    Console.WriteLine("Nhà cung cấp đã được cập nhật.");
+                    break;
+                case 3:
+                    Console.Write("Nhập mô tả cấu hình mới: ");
+                    string moTaCauHinhMoi = Console.ReadLine();
+                    phieuCanSua.MoTa = moTaCauHinhMoi;
+                    Console.WriteLine("Mô tả cấu hình đã được cập nhật.");
+                    break;
+                case 4:
+                    SuaThongTinLaptop(phieuCanSua);
+                    break;
+                case 5:
+                    SuaThongTinPhone(phieuCanSua);
+                    break;
+                default:
+                    Console.WriteLine("Lựa chọn không hợp lệ. Không thay đổi.");
+                    break;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Không tìm thấy lô hàng có mã phiếu nhập này.");
+        }
+    }
+    //Sửa thông tin Laptop
+    static void SuaThongTinLaptop(PhieuHang phieuNhap)
+    {
+        Console.WriteLine("Sửa thông tin laptop trong lô hàng:");
+        Console.Write("Nhập mã laptop cần sửa: ");
+        string maLaptopCanSua = Console.ReadLine();
+
+        Laptop laptopCanSua = null;
+
+        foreach (var laptop in phieuNhap.DanhSachLaptop)
+        {
+            if (laptop.Serial_id == maLaptopCanSua)
+            {
+                laptopCanSua = laptop;
+                break;
+            }
+        }
+
+        if (laptopCanSua != null)
+        {
+            Console.WriteLine("Chọn thông tin bạn muốn sửa:");
+            Console.WriteLine("1. Số serial");
+            Console.WriteLine("2. Giá vốn");
+            Console.WriteLine("3. Giá thuế");
+            Console.Write("Nhập lựa chọn của bạn: ");
+            int luaChon = int.Parse(Console.ReadLine());
+
+            switch (luaChon)
+            {
+                case 1:
+                    Console.Write("Nhập số serial mới: ");
+                    string soSerialMoi = Console.ReadLine();
+                    laptopCanSua.Serial_id = soSerialMoi;
+                    Console.WriteLine("Số serial đã được cập nhật.");
+                    break;
+                case 2:
+                    Console.Write("Nhập giá vốn mới: ");
+                    double giaVonMoi = double.Parse(Console.ReadLine());
+                    laptopCanSua.GiaVonNhapHang = giaVonMoi;
+                    Console.WriteLine("Giá vốn đã được cập nhật.");
+                    break;
+                case 3:
+                    Console.Write("Nhập tỷ giá thuế mới: ");
+                    double giaThueMoi = double.Parse(Console.ReadLine());
+                    laptopCanSua.GiaVonNhapHang = giaThueMoi;
+                    Console.WriteLine("Giá vốn đã được cập nhật.");
+                    break;
+                default:
+                    Console.WriteLine("Lựa chọn không hợp lệ. Không thay đổi.");
+                    break;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Không tìm thấy laptop có mã tương ứng.");
+        }
+    }
+    //Sửa Thông tin Phone
+    static void SuaThongTinPhone(PhieuNhap phieuNhap)
+    {
+        Console.WriteLine("Sửa thông tin điện thoại trong lô hàng:");
+        Console.Write("Nhập mã điện thoại cần sửa: ");
+        string maDienThoaiCanSua = Console.ReadLine();
+
+        Phone phoneCanSua = null;
+
+        foreach (var phone in phieuNhap.DanhSachPhone)
+        {
+            if (phone.Box_id == maDienThoaiCanSua)
+            {
+                phoneCanSua = phone;
+                break;
+            }
+        }
+
+        if (phoneCanSua != null)
+        {
+            Console.WriteLine("Chọn thông tin bạn muốn sửa:");
+            Console.WriteLine("1. Số thùng");
+            Console.WriteLine("2. Giá vốn");
+            Console.WriteLine("2. Phí chuyên chỡ");
+            Console.Write("Nhập lựa chọn của bạn: ");
+            int luaChon = int.Parse(Console.ReadLine());
+
+            switch (luaChon)
+            {
+                case 1:
+                    Console.Write("Nhập số thùng mới: ");
+                    string soSerialMoi = Console.ReadLine();
+                    phoneCanSua.Box_id = soSerialMoi;
+                    Console.WriteLine("Số serial đã được cập nhật.");
+                    break;
+                case 2:
+                    Console.Write("Nhập giá vốn mới: ");
+                    double donGiaThungMoi = double.Parse(Console.ReadLine());
+                    phoneCanSua.DonGiaThung = donGiaThungMoi;
+                    Console.WriteLine("Giá vốn đã được cập nhật.");
+                    break;
+                case 3:
+                    Console.Write("Nhập phí chuyên chỡ mới: ");
+                    double phiChuyenChoMoi = double.Parse(Console.ReadLine());
+                    phoneCanSua.DonGiaThung = phiChuyenChoMoi;
+                    Console.WriteLine("Giá vốn đã được cập nhật.");
+                    break;
+                default:
+                    Console.WriteLine("Lựa chọn không hợp lệ. Không thay đổi.");
+                    break;
+            }
+        }
+        else
+        {
+            Console.WriteLine("Không tìm thấy điện thoại có mã tương ứng.");
         }
     }
     /*  static LoHang ThemLoHang(LoaiThietBi loaiThietBi)
