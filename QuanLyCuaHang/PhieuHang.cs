@@ -28,7 +28,18 @@ namespace QuanLyCuaHang
         }
 
         public abstract double TinhTong();
-   
+
+        public virtual void TimKiem()
+        {
+            Console.WriteLine($"Mã phiếu: {MaPhieu}");
+            Console.WriteLine($"Ngày nhập hàng: {NgayNhapHang}");
+            Console.WriteLine($"Tên nhà cung cấp: {TenNhaCungCap}");
+            Console.WriteLine($"Loại hàng: {LoaiHang}");
+            Console.WriteLine($"Số lượng: {SoLuong}");
+            Console.WriteLine($"Tên sản phẩm: {TenSP}");
+            Console.WriteLine($"Mô tả cấu hình: {MoTa}");
+          
+        }
 
         public virtual string toString()
         {

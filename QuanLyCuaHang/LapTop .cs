@@ -25,6 +25,15 @@ namespace QuanLyCuaHang
             return SoLuong * (GiaVonNhapHang + GiaVonNhapHang * TyGiaThue);
         }
 
+        public override void TimKiem(){
+            base.TimKiem();
+            Console.WriteLine($"Số seri: {SoSeri}");
+            Console.WriteLine($"Giá vốn nhập hàng: {GiaVonNhapHang}");
+            Console.WriteLine($"Tỷ giá thuế: {TyGiaThue}");
+            Console.WriteLine($"Tổng tiền: {TinhTong()}");
+            Console.ReadKey();
+
+        }
         public override string toString()
         {
             return $"{base.toString()} {SoSeri,-10} {GiaVonNhapHang,-10} {TyGiaThue,-10} {TinhTong(),-10}";

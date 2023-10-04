@@ -24,7 +24,15 @@ namespace QuanLyCuaHang
         {
             return (SoLuong * DonGiaThung) + PhiVanChuyen;
         }
-
+        public override void TimKiem()
+        {
+            base.TimKiem();
+            Console.WriteLine($"Mã thùng: {MaThung}");
+            Console.WriteLine($"Đơn giá thùng: {DonGiaThung}");
+            Console.WriteLine($"Phí vận chuyển: {PhiVanChuyen}");
+            Console.WriteLine($"Tổng tiền: {TinhTong()}");
+            Console.ReadKey();
+        }
         public override string toString()
         {
             return$"{ base.toString()} {MaThung} {DonGiaThung} {PhiVanChuyen} {TinhTong()}";
