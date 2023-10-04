@@ -33,7 +33,7 @@ namespace test1
         public virtual string toString()
         {
           
-            return ($"| {MaPhieu,-10} | {NgayNhapHang,-10} | {TenNhaCungCap,-10} |{LoaiHang,-10} |{SoLuong,-10}| {TenSP,-10} | {MoTa,-10}| {TinhTong(),-10}|");
+            return ($"| {MaPhieu,-10} | {NgayNhapHang.ToString("dd-MM-yyyy")} | {TenNhaCungCap,-10} |{LoaiHang,-10} |{SoLuong,-10}| {TenSP,-10} | {MoTa,-10}| {TinhTong(),-10}|");
 
             /*
                         Console.WriteLine($"Mã phiếu: {MaPhieu}");
