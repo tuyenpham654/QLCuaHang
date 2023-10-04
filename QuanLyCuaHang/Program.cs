@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using test1;
+
 
 namespace QuanLyCuaHang
 {
@@ -92,7 +92,7 @@ namespace QuanLyCuaHang
 
         static void AddPhieuHang()
         {
-            int maPhieu = 1;
+            int maPhieu;
             DateTime ngayNhapHang;
             string tenNhaCungCap;
             int loaiHang;
