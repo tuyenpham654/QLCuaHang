@@ -37,6 +37,10 @@ namespace QuanLyCuaHang
             Console.WriteLine($"Tổng tiền: {TinhTong()}");
             Console.ReadKey();
         }
+        public override string getAll()
+        {
+            return $"{base.toString()} {MaThung,-10} | {DonGiaThung,-10} | {PhiVanChuyen,-10} | {TinhTong(),-10}|";
+        }
         public override string toString()
         {
             return $"{base.toString()}{TinhTong(),-10}|";

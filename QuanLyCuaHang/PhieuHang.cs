@@ -48,7 +48,10 @@ namespace QuanLyCuaHang
             Console.WriteLine($"Mô tả cấu hình: {MoTa}");
           
         }
-
+        public virtual string getAll()
+        {
+            return ($"| {MaPhieu,-10} | {NgayNhapHang.ToString("dd-MM-yyyy"),-15} | {TenNhaCungCap,-10} |{LoaiHang,-13} |{SoLuong,-10}| {TenSP,-14} | {MoTa,-10}|");
+        }
         public virtual string toString()
         {
             return ($"| {MaPhieu,-10} | {NgayNhapHang.ToString("dd-MM-yyyy"),-15} | {TenNhaCungCap,-10} |{LoaiHang,-13} |{SoLuong,-10}| {TenSP,-14} | {MoTa,-10}|");

@@ -47,11 +47,13 @@ namespace QuanLyCuaHang
                     case "2":
                         Console.WriteLine("Lua chon 2 da chon");
                         InToanBoDonHang();
+                        LuuDanhSachLoHangVaoTep();
                        // Console.ReadKey();
                         break;
                     case "3":
                         Console.WriteLine("Lua chon 3 da chon");
                         XoaDonHang();
+                        LuuDanhSachLoHangVaoTep();
                         Console.ReadKey();
                         break;
                     case "4":
@@ -160,7 +162,7 @@ namespace QuanLyCuaHang
             {
                 foreach (var phieuHang in danhSachPhieuHang)
                 {
-                    sw.WriteLine(phieuHang.toString());
+                    sw.WriteLine(phieuHang.getAll());
                 }
             }
 
