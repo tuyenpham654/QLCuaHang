@@ -23,6 +23,7 @@ namespace QuanLyCuaHang
             PhiVanChuyen = phiVanChuyen;
         }
 
+
         public override double TinhTong()
         {
             return (SoLuong * DonGiaThung) + PhiVanChuyen;
@@ -38,7 +39,7 @@ namespace QuanLyCuaHang
         }
         public override string toString()
         {
-            return$"{ base.toString()} {MaThung} {DonGiaThung} {PhiVanChuyen} {TinhTong()}";
+            return$"{ base.toString()} {MaThung,-10} | {DonGiaThung,-10} | {PhiVanChuyen,-10} | {TinhTong(),-10}|";
             
        /*     Console.WriteLine($"Mã thùng: {base.toString()}");
             Console.WriteLine($"Mã thùng: {MaThung}");

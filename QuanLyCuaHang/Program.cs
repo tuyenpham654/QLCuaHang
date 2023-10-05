@@ -13,9 +13,11 @@ namespace QuanLyCuaHang
     {
 
         static List<PhieuHang> danhSachPhieuHang = new List<PhieuHang>();
-        static string filePath = "D:\\Nhom 2\\QLCuaHang\\QuanLyCuaHang\\file\\ThietBi.txt";
+        static string filePath = "D:\\learn\\L.spkt\\OOPC#\\final\\QuanLyCuaHang\\QuanLyCuaHang\\file\\ThietBi.txt";
+
         static void Main(string[] args)
         {
+            XuatVaDocFileTxt();
             bool isRunning = true;
             while (isRunning)
             {
@@ -104,7 +106,9 @@ namespace QuanLyCuaHang
             Console.WriteLine("Nhập tên nhà cung cấp:");
             tenNhaCungCap = Console.ReadLine();
 
-            Console.WriteLine("Nhập loại hàng (1 - Laptop, 2 - Điện thoại):");
+            Console.WriteLine("+--- Nhập loại hàng ---+");
+            Console.WriteLine("|1. Phiếu Laptop       |");
+            Console.WriteLine("|2. Phiếu Điện thoại   |");
             loaiHang = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Nhập số lượng:");
@@ -162,16 +166,13 @@ namespace QuanLyCuaHang
             Console.WriteLine("Phiếu hàng đã được lưu vào tập tin.");
         }
 
-
         static void InToanBoDonHang()
         {
             Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-            Console.WriteLine("| Mã phiếu | Ngày nhập hàng | Tên nhà cung cấp | Loại hàng | Số lượng| Tên sản phẩm | Cấu hình | Tổng |");
-
+            Console.WriteLine("| Mã phiếu | Ngày nhập hàng | Tên NCC  | Loại hàng | Số lượng | Tên sản phẩm | Cấu hình | Tổng |");
 
             foreach (var phieuHang in danhSachPhieuHang)
             {
-
                 Console.WriteLine(phieuHang.toString());
             }
             Console.WriteLine("+------------------------------------------------------------------------------------------------------+");
@@ -191,7 +192,8 @@ namespace QuanLyCuaHang
             }
             else
             {
-                Console.WriteLine("Không tìm thấy phiếu hàng có mã phiếu này.");
+                Console.WriteLine("Không tìm thấy phiếu hàng có mã phiếu này..");
+                
             }
         }
 
@@ -233,8 +235,53 @@ namespace QuanLyCuaHang
 
         static void XuatVaDocFileTxt()
         {
-            // Hãy thêm mã code để xuất và đọc file txt thông tin phiếu nhập ở đây
-            Console.WriteLine("Chức năng xuất và đọc file đang phát triển.");
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] parts = line.Split('|');
+
+
+                        int maPhieu;
+                        DateTime ngayNhapHang;
+                        string tenNhaCungCap;
+                        int loaiHang;
+                        int soLuong;
+                        string tenSP;
+                        string moTa;
+
+                        //Console.WriteLine("Nhập mã phiếu:");
+                        maPhieu = int.Parse(parts[1].Trim());
+                        ngayNhapHang = DateTime.Parse(parts[2].Trim());
+                        tenNhaCungCap = parts[3].Trim();
+                        loaiHang = int.Parse(parts[4].Trim());
+                        soLuong = int.Parse(parts[5].Trim());
+                        tenSP = parts[6].Trim();
+                        moTa = parts[7].Trim();
+
+                        if (loaiHang == 1)
+                        {
+                            string soSeri = parts[8].Trim();
+                            double giaVonNhapHang = double.Parse(parts[9].Trim());
+                            double tyGiaThue = double.Parse(parts[10].Trim());
+                            LapTop laptop = new LapTop(maPhieu, ngayNhapHang, tenNhaCungCap, loaiHang, soLuong, tenSP,moTa  ,  soSeri, giaVonNhapHang, tyGiaThue);
+                            danhSachPhieuHang.Add(laptop);
+                        }
+                        else if (loaiHang == 2)
+                        {
+                      
+                            int maThung = int.Parse(parts[8].Trim());
+                            double donGiaThung = double.Parse(parts[9].Trim());
+                            double phiVanChuyen = double.Parse(parts[10].Trim());
+                            DienThoai dienThoai = new DienThoai(maPhieu, ngayNhapHang, tenNhaCungCap, loaiHang, soLuong, tenSP,moTa , maThung, donGiaThung, phiVanChuyen);
+                            danhSachPhieuHang.Add(dienThoai);
+                        }
+                    }
+                }
+            }
         }
 
 

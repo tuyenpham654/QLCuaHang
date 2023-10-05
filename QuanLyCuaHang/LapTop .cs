@@ -24,6 +24,7 @@ namespace QuanLyCuaHang
             TyGiaThue = tyGiaThue;
         }
 
+
         public override double TinhTong()
         {
             return SoLuong * (GiaVonNhapHang + GiaVonNhapHang * TyGiaThue);
@@ -40,7 +41,7 @@ namespace QuanLyCuaHang
         }
         public override string toString()
         {
-            return $"{base.toString()} {SoSeri,-10} {GiaVonNhapHang,-10} {TyGiaThue,-10} {TinhTong(),-10}";
+            return $"{base.toString()} {SoSeri,-10} | {GiaVonNhapHang,-10} | {TyGiaThue,-10} | {TinhTong(),-10}|";
           /*  base.InThongTin();
             Console.WriteLine($"Số seri: {SoSeri}");
             Console.WriteLine($"Giá vốn nhập hàng: {GiaVonNhapHang}");
