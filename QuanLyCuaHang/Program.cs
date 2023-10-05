@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.IO;
 using System.Linq;
 using System.Security.Policy;
@@ -13,7 +14,7 @@ namespace QuanLyCuaHang
     {
 
         static List<PhieuHang> danhSachPhieuHang = new List<PhieuHang>();
-        static string filePath = "D:\\learn\\L.spkt\\OOPC#\\final\\QuanLyCuaHang\\QuanLyCuaHang\\file\\ThietBi.txt";
+        static string filePath = "D:\\Nhom 2\\QLCuaHang\\QuanLyCuaHang\\file\\ThietBi.txt";
 
         static void Main(string[] args)
         {
@@ -46,7 +47,7 @@ namespace QuanLyCuaHang
                     case "2":
                         Console.WriteLine("Lua chon 2 da chon");
                         InToanBoDonHang();
-                        Console.ReadKey();
+                       // Console.ReadKey();
                         break;
                     case "3":
                         Console.WriteLine("Lua chon 3 da chon");
@@ -174,8 +175,27 @@ namespace QuanLyCuaHang
             foreach (var phieuHang in danhSachPhieuHang)
             {
                 Console.WriteLine(phieuHang.toString());
+                Console.WriteLine("+------------------------------------------------------------------------------------------------------+");
             }
-            Console.WriteLine("+------------------------------------------------------------------------------------------------------+");
+            
+            Console.Write("Nhấn 1 để xem chi tiết từng mã.\nNhấn phím bất kỳ để thoát.");
+
+            string check = (Console.ReadLine());
+
+            if (check != "1") {
+
+                
+            }
+            else
+            {
+                Console.Write("1. Nhập mã để xem chi tiết: ");
+                int maPhieu = int.Parse(Console.ReadLine());
+                PhieuHang phieuHangChiTiet = danhSachPhieuHang.Find(p => p.MaPhieu == maPhieu);
+                phieuHangChiTiet.TimKiem();
+            }
+           
+    
+
         }
 
         static void TimKiemDonHangTheoMaPhieu()
