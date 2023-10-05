@@ -39,13 +39,14 @@ namespace QuanLyCuaHang
         }
         public override string toString()
         {
-            return$"{ base.toString()} {MaThung,-10} | {DonGiaThung,-10} | {PhiVanChuyen,-10} | {TinhTong(),-10}|";
-            
-       /*     Console.WriteLine($"Mã thùng: {base.toString()}");
-            Console.WriteLine($"Mã thùng: {MaThung}");
-            Console.WriteLine($"Đơn giá thùng: {DonGiaThung}");
-            Console.WriteLine($"Phí vận chuyển: {PhiVanChuyen}");
-            Console.WriteLine($"Tổng tiền: {TinhTong()}");*/
+            return $"{base.toString()}{TinhTong(),-10}|";
+            // return$"{ base.toString()} {MaThung,-10} | {DonGiaThung,-10} | {PhiVanChuyen,-10} | {TinhTong(),-10}|";
+
+            /*     Console.WriteLine($"Mã thùng: {base.toString()}");
+                 Console.WriteLine($"Mã thùng: {MaThung}");
+                 Console.WriteLine($"Đơn giá thùng: {DonGiaThung}");
+                 Console.WriteLine($"Phí vận chuyển: {PhiVanChuyen}");
+                 Console.WriteLine($"Tổng tiền: {TinhTong()}");*/
         }
     }
 }
