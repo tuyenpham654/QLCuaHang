@@ -64,7 +64,7 @@ namespace QuanLyCuaHang
                         break;
                     case "6":
                         Console.WriteLine("Lua chon 6 da chon");
-                        XuatVaDocFileTxt();
+                        InToanBoDonHang();
                         Console.ReadKey();
                         break;
                     case "7":
@@ -192,7 +192,7 @@ namespace QuanLyCuaHang
             }
             else
             {
-                Console.WriteLine("Không tìm thấy phiếu hàng có mã phiếu này..");
+                Console.WriteLine("Không tìm thấy phiếu hàng có mã phiếu này.");
                 
             }
         }
