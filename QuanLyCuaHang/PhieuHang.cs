@@ -17,8 +17,6 @@ namespace QuanLyCuaHang
         private string tenSP;
         private string moTa;
 
-        public List<LapTop> DanhSachLaptop { get; set; }
-        public List<DienThoai> DanhSachPhone { get; set; }
 
 
         public int MaPhieu { get => maPhieu; set => maPhieu = value; }
