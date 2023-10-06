@@ -32,20 +32,20 @@ namespace QuanLyCuaHang
 
         public override void TimKiem(){
             base.TimKiem();
-            Console.WriteLine($"Số seri: {SoSeri}");
-            Console.WriteLine($"Giá vốn nhập hàng: {GiaVonNhapHang}");
-            Console.WriteLine($"Tỷ giá thuế: {TyGiaThue}");
-            Console.WriteLine($"Tổng tiền: {TinhTong()}");
+            Console.WriteLine($"      Số seri: {SoSeri}");
+            Console.WriteLine($"      Giá vốn nhập hàng: {GiaVonNhapHang}");
+            Console.WriteLine($"      Tỷ giá thuế: {TyGiaThue}");
+            Console.WriteLine($"      Tổng tiền: {TinhTong()}");
             Console.ReadKey();
 
         }
         public override string getAll()
         {
-            return $"{base.toString()} {SoSeri,-10} | {GiaVonNhapHang,-10} | {TyGiaThue,-10} | {TinhTong(),-10}|";
+            return $"{base.getAll()} {SoSeri,-10} | {GiaVonNhapHang,-10} | {TyGiaThue,-10} | {TinhTong(),-10}|";
         }
         public override string toString()
         {
-            return $"{base.toString()} {TinhTong(),-10}|";
+            return $"{base.toString()} {TinhTong(),-15}|";
           //  return $"{base.toString()} {SoSeri,-10} | {GiaVonNhapHang,-10} | {TyGiaThue,-10} | {TinhTong(),-10}|";
           /*  base.InThongTin();
             Console.WriteLine($"Số seri: {SoSeri}");

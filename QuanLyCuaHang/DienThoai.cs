@@ -31,19 +31,19 @@ namespace QuanLyCuaHang
         public override void TimKiem()
         {
             base.TimKiem();
-            Console.WriteLine($"Mã thùng: {MaThung}");
-            Console.WriteLine($"Đơn giá thùng: {DonGiaThung}");
-            Console.WriteLine($"Phí vận chuyển: {PhiVanChuyen}");
-            Console.WriteLine($"Tổng tiền: {TinhTong()}");
+            Console.WriteLine($"      Mã thùng: {MaThung}");
+            Console.WriteLine($"      Đơn giá thùng: {DonGiaThung}");
+            Console.WriteLine($"      Phí vận chuyển: {PhiVanChuyen}");
+            Console.WriteLine($"      Tổng tiền: {TinhTong()}");
             Console.ReadKey();
         }
         public override string getAll()
         {
-            return $"{base.toString()} {MaThung,-10} | {DonGiaThung,-10} | {PhiVanChuyen,-10} | {TinhTong(),-10}|";
+            return $"{base.getAll()} {MaThung,-10} | {DonGiaThung,-10} | {PhiVanChuyen,-10} | {TinhTong(),-10}|";
         }
         public override string toString()
         {
-            return $"{base.toString()}{TinhTong(),-10}|";
+            return $"{base.toString()} {TinhTong(),-15}|";
             // return$"{ base.toString()} {MaThung,-10} | {DonGiaThung,-10} | {PhiVanChuyen,-10} | {TinhTong(),-10}|";
 
             /*     Console.WriteLine($"Mã thùng: {base.toString()}");

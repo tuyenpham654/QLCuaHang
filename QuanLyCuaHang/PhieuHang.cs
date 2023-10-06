@@ -44,22 +44,22 @@ namespace QuanLyCuaHang
 
         public virtual void TimKiem()
         {
-            Console.WriteLine($"Mã phiếu: {MaPhieu}");
-            Console.WriteLine($"Ngày nhập hàng: {NgayNhapHang}");
-            Console.WriteLine($"Tên nhà cung cấp: {TenNhaCungCap}");
-            Console.WriteLine($"Loại hàng: {LoaiHang}");
-            Console.WriteLine($"Số lượng: {SoLuong}");
-            Console.WriteLine($"Tên sản phẩm: {TenSP}");
-            Console.WriteLine($"Mô tả cấu hình: {MoTa}");
+            Console.WriteLine($"      Mã phiếu         : {MaPhieu,-10}|\n");
+            Console.WriteLine($"      Ngày nhập hàng   : {NgayNhapHang,-10}\n");
+            Console.WriteLine($"      Tên nhà cung cấp : {TenNhaCungCap,-10}\n");
+            Console.WriteLine($"      Loại hàng        : {LoaiHang}\n");
+            Console.WriteLine($"      Số lượng         : {SoLuong} \n");
+            Console.WriteLine($"      Tên sản phẩm     : {TenSP} \n");
+            Console.WriteLine($"      Mô tả cấu hình   : {MoTa} \n");
           
         }
         public virtual string getAll()
         {
-            return ($"| {MaPhieu,-10} | {NgayNhapHang.ToString("dd-MM-yyyy"),-15} | {TenNhaCungCap,-10} |{LoaiHang,-13} |{SoLuong,-10}| {TenSP,-14} | {MoTa,-10}|");
+            return ($"| {MaPhieu,-8} | {NgayNhapHang.ToString("dd-MM-yyyy"),-14} | {TenNhaCungCap,-15} |{LoaiHang,-10} |{SoLuong,-5}| {TenSP,-14} | {MoTa,-10}|");
         }
         public virtual string toString()
         {
-            return ($"| {MaPhieu,-10} | {NgayNhapHang.ToString("dd-MM-yyyy"),-15} | {TenNhaCungCap,-10} |{LoaiHang,-13} |{SoLuong,-10}| {TenSP,-14} | {MoTa,-10}|");
+            return ($"|    {MaPhieu,-5} |  {NgayNhapHang.ToString("dd-MM-yyyy"),-13} | {TenNhaCungCap,-17} |   {LoaiHang,-7} |   {SoLuong,-7}| {TenSP,-20} | {MoTa,-23}|");
 
             /*
                         Console.WriteLine($"Mã phiếu: {MaPhieu}");

@@ -20,64 +20,64 @@ namespace QuanLyCuaHang
             {
                 Console.Clear(); // Xóa màn hình để hiển thị menu mới
                 Console.OutputEncoding = Encoding.UTF8;
-                Console.WriteLine("+---Thiết Bị Công Nghệ TTCP---+");
-                Console.WriteLine("|------------MENU-------------|");
-                Console.WriteLine("|1. Thêm phiếu hàng           |");
-                Console.WriteLine("|2. Xem phiếu hàng            |");
-                Console.WriteLine("|3. Xóa phiếu hàng            |");
-                Console.WriteLine("|4. Sửa phiếu hàng            |");
-                Console.WriteLine("|5. Tìm kiếm phiếu hàng       |");
-                Console.WriteLine("|6. Xuất file phiếu hàng      |");
-                Console.WriteLine("|7. Đọc file phiếu hàng       |");
-                Console.WriteLine("|0. Thoát                     |");
-                Console.Write("Mời bạn nhập lựa chọn: ");
+                Console.WriteLine("      +---Thiết Bị Công Nghệ TTCP---+");
+                Console.WriteLine("      |------------MENU-------------|");
+                Console.WriteLine("      |1. Thêm phiếu hàng           |");
+                Console.WriteLine("      |2. Xem phiếu hàng            |");
+                Console.WriteLine("      |3. Xóa phiếu hàng            |");
+                Console.WriteLine("      |4. Sửa phiếu hàng            |");
+                Console.WriteLine("      |5. Tìm kiếm phiếu hàng       |");
+                Console.WriteLine("      |6. Xuất file phiếu hàng      |");
+                Console.WriteLine("      |7. Đọc file phiếu hàng       |");
+                Console.WriteLine("      |0. Thoát                     |");
+                Console.Write("      Mời bạn nhập lựa chọn: ");
                 string luaChon = Console.ReadLine();
                 switch (luaChon)
                 {
                     case "1":
-                        Console.WriteLine("Lua chon 1 da chon");
+                        Console.WriteLine("      Lựa chọn đã được chọn");
                         AddPhieuHang();
                         LuuDanhSachLoHangVaoTep();
                         Console.ReadKey();
                         break;
                     case "2":
-                        Console.WriteLine("Lua chon 2 da chon");
+                        Console.WriteLine("      Lựa chọn đã được chọn");
                         InToanBoDonHang();
                         LuuDanhSachLoHangVaoTep();
                        // Console.ReadKey();
                         break;
                     case "3":
-                        Console.WriteLine("Lua chon 3 da chon");
+                        Console.WriteLine("      Lựa chọn đã được chọn");
                         XoaDonHang();
                         LuuDanhSachLoHangVaoTep();
                         Console.ReadKey();
                         break;
                     case "4":
-                        Console.WriteLine("Lua chon 4 da chon");
+                        Console.WriteLine("      Lựa chọn đã được chọn");
                         SuaDonHang();
                         Console.ReadKey();
                         break;
                     case "5":
-                        Console.WriteLine("Lua chon 5 da chon");
+                        Console.WriteLine("      Lựa chọn đã được chọn");
                         TimKiemDonHangTheoMaPhieu();
                         break;
                     case "6":
-                        Console.WriteLine("Lua chon 6 da chon");
+                        Console.WriteLine("      Lựa chọn đã được chọn");
                         InToanBoDonHang();
                         Console.ReadKey();
                         break;
                     case "7":
-                        Console.WriteLine("Lua chon 7 da chon");
+                        Console.WriteLine("      Lựa chọn đã được chọn");
 
                         Console.ReadKey();
                         break;
 
                     case "0":
-                        Console.WriteLine("Ket thuc chuong trinh");
+                        Console.WriteLine("      Ket thuc chuong trinh");
                         isRunning = false; // Kết thúc chương trình
                         break;
                     default:
-                        Console.WriteLine("Lua chon khong hop le, vui long nhap lai.");
+                        Console.WriteLine("      Lua chon khong hop le, vui long nhap lai.");
                         Console.ReadKey();
                         break;
 
@@ -95,61 +95,152 @@ namespace QuanLyCuaHang
             int loaiHang;
             int soLuong;
             string tenSP;
+            int maHangCanKiemTra;
+            bool kiemtra;
+            Console.Write("      Nhập mã phiếu:");
+            do
+            {
+                kiemtra = int.TryParse(Console.ReadLine(), out maHangCanKiemTra);
+                if (kiemtra == true)
+                {
+                    PhieuHang ph = danhSachPhieuHang.Find(p => p.MaPhieu == maHangCanKiemTra);
 
-            Console.WriteLine("Nhập mã phiếu:");
-            maPhieu = int.Parse(Console.ReadLine());
+                    if (ph == null)
+                    {
+                        kiemtra = true;
 
-            Console.WriteLine("Nhập ngày nhập hàng (dd/mm/yyyy):");
-            ngayNhapHang = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+                    }
+                    else
+                    {
+                        Console.Write("      Mã hàng tồn tại trong danh sách, mời nhập lại: ");
+                        kiemtra = false;
+                    }
+                }
+                else
+                {
+                    Console.Write("      Dữ liệu không hợp lệ, mời nhập lại mã: ");
+                }
 
-            Console.WriteLine("Nhập tên nhà cung cấp:");
+            } while (kiemtra == false);
+
+            maPhieu = maHangCanKiemTra;
+            Console.Write("      Nhập ngày nhập hàng (dd/mm/yyyy): ");
+            kiemtra = DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out ngayNhapHang);
+            //   kiemtra = uint.TryParse(Console.ReadLine(), out uint maPhieu);
+            while (kiemtra == false)
+            {
+                Console.Write("      Định dạng không hợp lệ, mời nhập lại (dd/mm/yyyy): ");
+                kiemtra = DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out ngayNhapHang);
+            }
+            Console.Write("      Nhập tên nhà cung cấp: ");
             tenNhaCungCap = Console.ReadLine();
 
-            Console.WriteLine("+--- Nhập loại hàng ---+");
-            Console.WriteLine("|1. Phiếu Laptop       |");
-            Console.WriteLine("|2. Phiếu Điện thoại   |");
-            loaiHang = int.Parse(Console.ReadLine());
+            Console.WriteLine("      +--- Nhập loại hàng ---+");
+            Console.WriteLine("      |1. Phiếu Laptop       |");
+            Console.WriteLine("      |2. Phiếu Điện thoại   |");
+            //      loaiHang = int.Parse(Console.ReadLine());
+            do
+            {
+                kiemtra = int.TryParse(Console.ReadLine(), out loaiHang);
+                if (kiemtra == true)
+                {
+                   if(loaiHang == 1 || loaiHang == 2)
+                    {
+                        kiemtra = true;
+                    }
+                    else
+                    {
+                        Console.Write("      Chỉ được nhập 1 hoặc 2, mời nhập lại:  ");
+                        kiemtra = false;
+                    }
+                }
+                else
+                {
+                    Console.Write("      Chỉ được nhập 1 hoặc 2, mời nhập lại:  ");
+                }
 
-            Console.WriteLine("Nhập số lượng:");
-            soLuong = int.Parse(Console.ReadLine());
+            } while (kiemtra == false);
 
-            Console.WriteLine("Nhập tên sản phẩm:");
+            Console.Write("      Nhập số lượng: ");
+            kiemtra = int.TryParse(Console.ReadLine(), out  soLuong);
+            while (kiemtra == false)
+            {
+                Console.Write("      Dữ liệu không hợp lệ, mời nhập lại: ");
+                kiemtra = int.TryParse(Console.ReadLine(), out soLuong);
+            }
+           // soLuong = int.Parse(Console.ReadLine());
+
+            Console.Write("      Nhập tên sản phẩm:");
             tenSP = Console.ReadLine();
 
-            Console.WriteLine("Nhập mô tả cấu hình:");
+            Console.Write("      Nhập mô tả cấu hình:");
             string moTa = Console.ReadLine();
 
             if (loaiHang == 1)
             {
                 string soSeri;
-                Console.WriteLine("Nhập số seri:");
+                Console.Write("      Nhập số seri:");
                 soSeri = Console.ReadLine();
                 double giaVonNhapHang;
-                Console.WriteLine("Nhập giá vốn nhập hàng:");
-                giaVonNhapHang = double.Parse(Console.ReadLine());
                 double tyGiaThue;
-                Console.WriteLine("Nhập tỷ giá thuế:");
-                tyGiaThue = double.Parse(Console.ReadLine());
+                Console.Write("      Nhập giá vốn nhập hàng:");
+
+                kiemtra = double.TryParse(Console.ReadLine(), out giaVonNhapHang);
+                while (kiemtra == false)
+                {
+                    Console.Write("      Dữ liệu không hợp lệ, mời nhập lại: ");
+                    kiemtra = double.TryParse(Console.ReadLine(), out giaVonNhapHang);
+                }
+
+              //  giaVonNhapHang = double.Parse(Console.ReadLine());
+             
+                Console.Write("      Nhập tỷ giá thuế:");
+                kiemtra = double.TryParse(Console.ReadLine(), out tyGiaThue);
+                while (kiemtra == false)
+                {
+                    Console.Write("      Dữ liệu không hợp lệ, mời nhập lại: ");
+                    kiemtra = double.TryParse(Console.ReadLine(), out tyGiaThue);
+                }
+               // tyGiaThue = double.Parse(Console.ReadLine());
 
                 LapTop laptop = new LapTop(maPhieu, ngayNhapHang, tenNhaCungCap, loaiHang, soLuong, tenSP, moTa, soSeri, giaVonNhapHang, tyGiaThue);
                 danhSachPhieuHang.Add(laptop);
             }
             else if (loaiHang == 2)
             {
-                Console.WriteLine("Nhập mã thùng:");
-                int maThung = int.Parse(Console.ReadLine());
+                int maThung;
+                double donGiaThung;
+                double phiVanChuyen;
+                Console.Write("      Nhập mã thùng: ");
+                kiemtra = int.TryParse(Console.ReadLine(), out maThung);
+                while (kiemtra == false)
+                {
+                    Console.Write("      Dữ liệu không hợp lệ, mời nhập lại: ");
+                    kiemtra = int.TryParse(Console.ReadLine(), out maThung);
+                }
+                Console.Write("      Nhập đơn giá thùng:");
+                kiemtra = double.TryParse(Console.ReadLine(), out donGiaThung);
+                while (kiemtra == false)
+                {
+                    Console.Write("      Dữ liệu không hợp lệ, mời nhập lại: ");
+                    kiemtra = double.TryParse(Console.ReadLine(), out donGiaThung);
+                }
 
-                Console.WriteLine("Nhập đơn giá thùng:");
-                double donGiaThung = double.Parse(Console.ReadLine());
 
-                Console.WriteLine("Nhập phí vận chuyển:");
-                double phiVanChuyen = double.Parse(Console.ReadLine());
+                Console.Write("      Nhập phí vận chuyển:");
+
+                kiemtra = double.TryParse(Console.ReadLine(), out phiVanChuyen);
+                while (kiemtra == false)
+                {
+                    Console.Write("      Dữ liệu không hợp lệ, mời nhập lại: ");
+                    kiemtra = double.TryParse(Console.ReadLine(), out phiVanChuyen);
+                }
 
                 DienThoai dienThoai = new DienThoai(maPhieu, ngayNhapHang, tenNhaCungCap, loaiHang, soLuong, tenSP, moTa, maThung, donGiaThung, phiVanChuyen);
                 danhSachPhieuHang.Add(dienThoai);
             }
 
-            Console.WriteLine("Thông tin phiếu hàng đã được nhập.");
+            Console.WriteLine("      Thông tin phiếu hàng đã được nhập.");
         }
 
         static void LuuDanhSachLoHangVaoTep()
@@ -162,34 +253,58 @@ namespace QuanLyCuaHang
                 }
             }
 
-            Console.WriteLine("Phiếu hàng đã được lưu vào tập tin.");
+            Console.WriteLine("      Phiếu hàng đã được lưu vào tập tin.");
         }
 
         static void InToanBoDonHang()
         {
-            Console.WriteLine("+-----------------------------------------------------------------------------------------------------+");
-            Console.WriteLine("| Mã phiếu | Ngày nhập hàng | Tên NCC  | Loại hàng | Số lượng | Tên sản phẩm | Cấu hình | Tổng |");
+            Console.WriteLine("         +--------------------------------------------------------------------------------------------------------------------------------------+");
+            Console.WriteLine("         | Mã phiếu | Ngày nhập hàng | Tên nhà cung cấp  | Loại hàng | Số lượng |     Tên sản phẩm     |        Cấu hình        |      Tổng      |");
+            Console.WriteLine("         +--------------------------------------------------------------------------------------------------------------------------------------+");
 
             foreach (var phieuHang in danhSachPhieuHang)
             {
-                Console.WriteLine(phieuHang.toString());
-                Console.WriteLine("+------------------------------------------------------------------------------------------------------+");
+                Console.OutputEncoding = Encoding.UTF8;
+                Console.WriteLine("         " + phieuHang.toString());
+                Console.WriteLine("         +--------------------------------------------------------------------------------------------------------------------------------------+");
             }
             
-            Console.Write("Nhấn 1 để xem chi tiết từng mã.\nNhấn phím bất kỳ để thoát.");
+            Console.Write("         Nhấn 1 để xem chi tiết từng mã.\n         Nhấn phím bất kỳ để thoát.");
 
             string check = (Console.ReadLine());
 
             if (check != "1") {
-
-                
+            
             }
             else
             {
-                Console.Write("1. Nhập mã để xem chi tiết: ");
-                int maPhieu = int.Parse(Console.ReadLine());
-                PhieuHang phieuHangChiTiet = danhSachPhieuHang.Find(p => p.MaPhieu == maPhieu);
-                phieuHangChiTiet.TimKiem();
+                Console.Write("         1. Nhập mã phiếu để xem chi tiết: ");
+                bool kiemtra;
+                int maPhieu;
+                do
+                {
+                    kiemtra = int.TryParse(Console.ReadLine(), out maPhieu);
+                    if (kiemtra == true)
+                    {
+                        PhieuHang phieuHangChiTiet = danhSachPhieuHang.Find(p => p.MaPhieu == maPhieu);
+
+                        if (phieuHangChiTiet != null)
+                        {
+                            phieuHangChiTiet.TimKiem();
+                        }
+                        else
+                        {
+                            Console.Write("         Mã không hàng tồn tại trong danh sách, mời nhập lại: ");
+                            kiemtra = false;
+                        }
+                    }
+                    else
+                    {
+                        Console.Write("         Dữ liệu không hợp lệ, mời nhập lại mã: ");
+                    }
+
+                } while (kiemtra == false);
+             
             }
            
     
@@ -198,21 +313,34 @@ namespace QuanLyCuaHang
 
         static void TimKiemDonHangTheoMaPhieu()
         {
-            Console.WriteLine("Nhập mã phiếu cần tìm:");
-            int maPhieu = int.Parse(Console.ReadLine());
-
-            PhieuHang phieuHang = danhSachPhieuHang.Find(p => p.MaPhieu == maPhieu);
-
-            if (phieuHang != null)
+            bool kiemtra;
+            int maPhieu;
+            Console.Write("      Nhập mã phiếu cần tìm: ");
+            do
             {
-                phieuHang.TimKiem();
-               // Console.WriteLine(phieuHang.TimKiem());
-            }
-            else
-            {
-                Console.WriteLine("Không tìm thấy phiếu hàng có mã phiếu này.");
+                kiemtra = int.TryParse(Console.ReadLine(), out maPhieu);
+                if (kiemtra == true)
+                {
+                    PhieuHang phieuHang = danhSachPhieuHang.Find(p => p.MaPhieu == maPhieu);
+
+                    if (phieuHang != null)
+                    {
+                        phieuHang.TimKiem();
+                    }
+                    else
+                    {
+                        Console.Write("      Không tìm thấy phiếu hàng có mã phiếu này.");
+                        kiemtra = true;
+                        Console.ReadKey();
                 
-            }
+                    }
+                }
+                else
+                {
+                    Console.Write("      Dữ liệu không hợp lệ, mời nhập lại mã: ");
+                }
+
+            } while (kiemtra == false);
         }
 
         static void SuaDonHang()
@@ -235,7 +363,7 @@ namespace QuanLyCuaHang
 
         static void XoaDonHang()
         {
-            Console.WriteLine("Nhập mã phiếu cần xóa:");
+            Console.Write("      Nhập mã phiếu cần xóa:");
             int maPhieu = int.Parse(Console.ReadLine());
 
             PhieuHang phieuHang = danhSachPhieuHang.Find(p => p.MaPhieu == maPhieu);
@@ -243,11 +371,11 @@ namespace QuanLyCuaHang
             if (phieuHang != null)
             {
                 danhSachPhieuHang.Remove(phieuHang);
-                Console.WriteLine("Đã xóa phiếu hàng có mã phiếu này.");
+                Console.WriteLine("      Đã xóa phiếu hàng có mã phiếu này.");
             }
             else
             {
-                Console.WriteLine("Không tìm thấy phiếu hàng có mã phiếu này.");
+                Console.WriteLine("      Không tìm thấy phiếu hàng có mã phiếu này.");
             }
         }
 
