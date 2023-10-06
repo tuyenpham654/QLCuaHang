@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.IO;
-using System.Linq;
-using System.Security.Policy;
 using System.Text;
-using System.Threading.Tasks;
 
 
 namespace QuanLyCuaHang
@@ -381,17 +377,17 @@ namespace QuanLyCuaHang
             }
         }
         //Sửa thông tin Laptop
-       /* static void SuaThongTinLaptop(PhieuHang phieuNhap)
+        static void SuaThongTinLaptop(PhieuHang phieuHang)
         {
             Console.WriteLine("Sửa thông tin laptop trong lô hàng:");
             Console.Write("Nhập mã laptop cần sửa: ");
             string maLaptopCanSua = Console.ReadLine();
 
-            Laptop laptopCanSua = null;
+            LapTop laptopCanSua = null;
 
-            foreach (var laptop in phieuNhap.DanhSachLaptop)
+            foreach (var laptop in phieuHang.DanhSachLaptop)
             {
-                if (laptop.Serial_id == maLaptopCanSua)
+                if (laptop.SoSeri == maLaptopCanSua)
                 {
                     laptopCanSua = laptop;
                     break;
@@ -412,7 +408,7 @@ namespace QuanLyCuaHang
                     case 1:
                         Console.Write("Nhập số serial mới: ");
                         string soSerialMoi = Console.ReadLine();
-                        laptopCanSua.Serial_id = soSerialMoi;
+                        laptopCanSua.SoSeri = soSerialMoi;
                         Console.WriteLine("Số serial đã được cập nhật.");
                         break;
                     case 2:
@@ -436,19 +432,19 @@ namespace QuanLyCuaHang
             {
                 Console.WriteLine("Không tìm thấy laptop có mã tương ứng.");
             }
-        }*/
+        }
         //Sửa Thông tin Phone
-        /*static void SuaThongTinPhone(PhieuNhap phieuNhap)
+        static void SuaThongTinPhone(PhieuHang phieuHang)
         {
             Console.WriteLine("Sửa thông tin điện thoại trong lô hàng:");
             Console.Write("Nhập mã điện thoại cần sửa: ");
-            string maDienThoaiCanSua = Console.ReadLine();
+            int maDienThoaiCanSua = Int32.Parse(Console.ReadLine());
 
-            Phone phoneCanSua = null;
+            DienThoai phoneCanSua = null;
 
-            foreach (var phone in phieuNhap.DanhSachPhone)
+            foreach (var phone in phieuHang.DanhSachPhone)
             {
-                if (phone.Box_id == maDienThoaiCanSua)
+                if (phone.MaThung == maDienThoaiCanSua)
                 {
                     phoneCanSua = phone;
                     break;
@@ -468,9 +464,9 @@ namespace QuanLyCuaHang
                 {
                     case 1:
                         Console.Write("Nhập số thùng mới: ");
-                        string soSerialMoi = Console.ReadLine();
-                        phoneCanSua.Box_id = soSerialMoi;
-                        Console.WriteLine("Số serial đã được cập nhật.");
+                        int soThungMoi = Int32.Parse(Console.ReadLine());
+                        phoneCanSua.MaThung = soThungMoi;
+                        Console.WriteLine("Số thùng đã được cập nhật.");
                         break;
                     case 2:
                         Console.Write("Nhập giá vốn mới: ");
@@ -493,7 +489,7 @@ namespace QuanLyCuaHang
             {
                 Console.WriteLine("Không tìm thấy điện thoại có mã tương ứng.");
             }
-        }*/
+        }
         /*  static LoHang ThemLoHang(LoaiThietBi loaiThietBi)
       {
           DateTime dt = DateTime.Now;

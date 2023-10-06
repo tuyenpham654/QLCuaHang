@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,10 @@ namespace QuanLyCuaHang
         private int soLuong;
         private string tenSP;
         private string moTa;
+
+        public List<LapTop> DanhSachLaptop { get; set; }
+        public List<DienThoai> DanhSachPhone { get; set; }
+
 
         public int MaPhieu { get => maPhieu; set => maPhieu = value; }
         public DateTime NgayNhapHang { get => ngayNhapHang; set => ngayNhapHang = value; }
