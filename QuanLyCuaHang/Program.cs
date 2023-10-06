@@ -54,7 +54,7 @@ namespace QuanLyCuaHang
                         break;
                     case "4":
                         Console.WriteLine("Lua chon 4 da chon");
-                        SuaDonHang();
+                        SuaPhieuNhap();
                         Console.ReadKey();
                         break;
                     case "5":
