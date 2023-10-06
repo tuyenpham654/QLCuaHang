@@ -28,56 +28,57 @@ namespace QuanLyCuaHang
                 Console.WriteLine("      |4. Sửa phiếu hàng            |");
                 Console.WriteLine("      |5. Tìm kiếm phiếu hàng       |");
                 Console.WriteLine("      |6. Xuất file phiếu hàng      |");
-                Console.WriteLine("      |7. Đọc file phiếu hàng       |");
+  //              Console.WriteLine("      |7. Đọc file phiếu hàng       |");
                 Console.WriteLine("      |0. Thoát                     |");
                 Console.Write("      Mời bạn nhập lựa chọn: ");
                 string luaChon = Console.ReadLine();
                 switch (luaChon)
                 {
                     case "1":
-                        Console.WriteLine("      Lựa chọn đã được chọn");
+                        Console.WriteLine("      Lựa chọn 1 đã được chọn");
                         AddPhieuHang();
                         LuuDanhSachLoHangVaoTep();
                         Console.ReadKey();
                         break;
                     case "2":
-                        Console.WriteLine("      Lựa chọn đã được chọn");
+                        Console.WriteLine("      Lựa chọn 2 đã được chọn");
                         InToanBoDonHang();
                         LuuDanhSachLoHangVaoTep();
                        // Console.ReadKey();
                         break;
                     case "3":
-                        Console.WriteLine("      Lựa chọn đã được chọn");
+                        Console.WriteLine("      Lựa chọn 3 đã được chọn");
                         XoaDonHang();
                         LuuDanhSachLoHangVaoTep();
                         Console.ReadKey();
                         break;
                     case "4":
-                        Console.WriteLine("      Lựa chọn đã được chọn");
+                        Console.WriteLine("      Lựa chọn 4 đã được chọn");
                         SuaDonHang();
                         Console.ReadKey();
                         break;
                     case "5":
-                        Console.WriteLine("      Lựa chọn đã được chọn");
+                        Console.WriteLine("      Lựa chọn 5 đã được chọn");
                         TimKiemDonHangTheoMaPhieu();
                         break;
                     case "6":
-                        Console.WriteLine("      Lựa chọn đã được chọn");
-                        InToanBoDonHang();
+                        Console.WriteLine("      Lựa chọn 6 đã được chọn");
+                      //  InToanBoDonHang();
+                        LuuDanhSachLoHangVaoTep();
                         Console.ReadKey();
                         break;
-                    case "7":
+             /*       case "7":
                         Console.WriteLine("      Lựa chọn đã được chọn");
 
                         Console.ReadKey();
-                        break;
+                        break;*/
 
                     case "0":
-                        Console.WriteLine("      Ket thuc chuong trinh");
+                        Console.WriteLine("      Kết thúc chương trình");
                         isRunning = false; // Kết thúc chương trình
                         break;
                     default:
-                        Console.WriteLine("      Lua chon khong hop le, vui long nhap lai.");
+                        Console.WriteLine("      Lựa chọn không hợp lệ.  Vui lòng nhập lại: ");
                         Console.ReadKey();
                         break;
 
