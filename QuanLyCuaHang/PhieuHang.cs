@@ -42,7 +42,7 @@ namespace QuanLyCuaHang
 
         public virtual void TimKiem()
         {
-            Console.WriteLine($"      Mã phiếu         : {MaPhieu,-10}|\n");
+            Console.WriteLine($"      Mã phiếu         : {MaPhieu,-10}\n");
             Console.WriteLine($"      Ngày nhập hàng   : {NgayNhapHang,-10}\n");
             Console.WriteLine($"      Tên nhà cung cấp : {TenNhaCungCap,-10}\n");
             Console.WriteLine($"      Loại hàng        : {LoaiHang}\n");

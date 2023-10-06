@@ -31,10 +31,10 @@ namespace QuanLyCuaHang
         public override void TimKiem()
         {
             base.TimKiem();
-            Console.WriteLine($"      Mã thùng: {MaThung}");
-            Console.WriteLine($"      Đơn giá thùng: {DonGiaThung}");
-            Console.WriteLine($"      Phí vận chuyển: {PhiVanChuyen}");
-            Console.WriteLine($"      Tổng tiền: {TinhTong()}");
+            Console.WriteLine($"      Mã thùng         : {MaThung}\n");
+            Console.WriteLine($"      Đơn giá thùng    : {DonGiaThung}\n");
+            Console.WriteLine($"      Phí vận chuyển   : {PhiVanChuyen} \n");
+            Console.WriteLine($"      Tổng tiền        : {TinhTong()}\n");
             Console.ReadKey();
         }
         public override string getAll()

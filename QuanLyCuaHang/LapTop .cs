@@ -32,10 +32,10 @@ namespace QuanLyCuaHang
 
         public override void TimKiem(){
             base.TimKiem();
-            Console.WriteLine($"      Số seri: {SoSeri}");
-            Console.WriteLine($"      Giá vốn nhập hàng: {GiaVonNhapHang}");
-            Console.WriteLine($"      Tỷ giá thuế: {TyGiaThue}");
-            Console.WriteLine($"      Tổng tiền: {TinhTong()}");
+            Console.WriteLine($"      Số seri          : {SoSeri}\n");
+            Console.WriteLine($"      Giá vốn nhập hàng: {GiaVonNhapHang}\n");
+            Console.WriteLine($"      Tỷ giá thuế      : {TyGiaThue}\n");
+            Console.WriteLine($"      Tổng tiền        : {TinhTong()}\n");
             Console.ReadKey();
 
         }
